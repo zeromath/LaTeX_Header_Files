@@ -1,2 +1,2 @@
-# LaTeX_Header_Files
+# LaTeX Header Files
 Personal used LaTeX header files

@@ -1,0 +1,201 @@
+\documentclass{amsart}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{subfiles}
+\usepackage{enumerate}
+\usepackage{fullpage}
+\usepackage{tikz}
+% \usepackage{marginnote}
+\usepackage{float}
+\usepackage{cancel}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{calligra}
+\usepackage{MnSymbol}
+% \usepackage{setspace}
+\usepackage{hyperref}
+% \usepackage{showkeys}
+% \usepackage{lastpage}
+% \usepackage{fancyhdr}
+\usepackage[all]{xy}
+\usepackage[capitalize]{cleveref}
+
+% Font control
+\DeclareMathVersion{mymath}
+\DeclareSymbolFont{myletters}{OML}{zplm}{m}{it}
+\SetSymbolFont{letters}{mymath}{OML}{zplm}{m}{it}
+\DeclareSymbolFont{myoperators}{OT1}{pplx}{m}{n}
+\SetSymbolFont{operators}{mymath}{OT1}{pplx}{m}{n}
+\mathversion{mymath}
+\renewcommand*\rmdefault{ppl}
+
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc}
+
+\newtheorem*{clm*}{Claim}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{clm}[thm]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{xca}[thm]{Exercise}
+\newtheorem{axiom}[thm]{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{setup}[thm]{Setup}
+\newtheorem{cond}[thm]{Condition}
+\newtheorem{cons}[thm]{Construction}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{ques}[thm]{Question}
+
+\numberwithin{equation}{section}
+
+\DeclareMathOperator{\aim}{Im}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\aend}{End}
+\DeclareMathOperator{\ahom}{Hom}
+\DeclareMathOperator{\aker}{Ker}
+\DeclareMathOperator{\ann}{Ann}
+\DeclareMathOperator{\ass}{Ass}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\colim}{Colim}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\der}{Der}
+\DeclareMathOperator{\ext}{Ext}
+\DeclareMathOperator{\fr}{Frac}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\hght}{ht}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\limit}{Lim}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\pd}{pd}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\rk}{rank}
+\DeclareMathOperator{\SHom}{\mathscr{H}\text{\kern -3pt {\calligra\large om}}\,}
+\DeclareMathOperator{\SKer}{\mathscr{K}\text{\kern -3pt {\calligra\large er}}\,}
+\DeclareMathOperator{\SDer}{\mathscr{D}\text{\kern -2pt {\calligra\large er}}\,}
+\DeclareMathOperator{\SEnd}{\mathscr{E}\text{\kern -3pt {\calligra\large nd}}\,}
+\DeclareMathOperator{\SSym}{\mathscr{S}\text{\kern -3pt {\calligra\large ym}}\,}
+\DeclareMathOperator{\soc}{soc}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\upth}{th}
+
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\bA}{\mbb{A}}
+\newcommand{\bP}{\mbb{P}}
+\newcommand{\CC}{\mbb{C}}
+\newcommand{\QQ}{\mbb{Q}}
+\newcommand{\NN}{\mbb{N}}
+\newcommand{\RR}{\mbb{R}}
+\newcommand{\ZZ}{\mbb{Z}}
+
+
+% mathscr - msc
+\newcommand{\msc}[1]{\mathscr{#1}}
+\newcommand{\sA}{\msc{A}}
+\newcommand{\sC}{\msc{C}}
+\newcommand{\sD}{\msc{D}}
+\newcommand{\sE}{\msc{E}}
+\newcommand{\sF}{\msc{F}}
+\newcommand{\sG}{\msc{G}}
+\newcommand{\sH}{\msc{H}}
+\newcommand{\sI}{\msc{I}}
+\newcommand{\sJ}{\msc{J}}
+\newcommand{\sL}{\msc{L}}
+\newcommand{\sM}{\msc{M}}
+\newcommand{\sT}{\msc{T}}
+
+% mathfrak - mf
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mm}{\mf{m}}
+
+% mathrm - mrm
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\dd}{\mrm{d}}
+\newcommand{\ee}{\mrm{e}}
+\newcommand{\ii}{\mrm{i}}
+\newcommand{\mH}{\mrm{H}}
+\newcommand{\mN}{\mrm{N}}
+\newcommand{\mT}{\mrm{T}}
+\newcommand{\mF}{\mrm{F}}
+
+% mathcal - mcal
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\cA}{\mcal{A}}
+\newcommand{\cB}{\mcal{B}}
+\newcommand{\cC}{\mcal{C}}
+\newcommand{\cL}{\mcal{L}}
+\newcommand{\OO}{\mcal{O}}
+\newcommand{\cR}{\mcal{R}}
+
+
+\newcommand{\dps}{\displaystyle}
+\newcommand{\seq}[2][x]{#1_1,\dots,#1_{#2}}
+
+% Need package mathtools
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\dba{\llangle}{\rrangle}
+\DeclarePairedDelimiter\ps{\llbracket}{\rrbracket}
+\DeclarePairedDelimiter\set{\{}{\}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+
+% \noindent
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+
+% Blank box placeholder for figures (to avoid requiring any
+% particular graphics capabilities for printing this document).
+\newcommand{\blankbox}[2]{%
+  \parbox{\columnwidth}{\centering
+    % Set fboxsep to 0 so that the actual size of the box will match the
+    % given measurements more closely.
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
+  }%
+}
+
+
+%% Deal with eqref and hypperef
+\makeatletter
+\renewcommand*{\eqref}[1]{%
+  \hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}%
+}
+\makeatother
+
+% comment color
+\definecolor{zhan}{rgb}{0.0, 0.44, 1.0}
+\definecolor{myblue}{cmyk}{1,.72,0,.38}
+
+% hyperref setup
+\hypersetup{
+  colorlinks = true,
+  % linkcolor = red,
+  % anchorcolor = black,
+  % citecolor = green,
+  % filecolor = cyan,
+  % menucolor = red,
+  % runcolor = cyan,
+  % urlcolor = magenta,
+  allcolors = zhan
+}
