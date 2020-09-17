@@ -5,7 +5,7 @@
 \usepackage{stmaryrd}
 \usepackage{mathtools}
 \usepackage{subfiles}
-\usepackage{enumerate}
+%\usepackage{enumerate}
 \usepackage{fullpage}
 \usepackage{tikz}
 % \usepackage{marginnote}
@@ -22,6 +22,9 @@
 % \usepackage{fancyhdr}
 \usepackage[all]{xy}
 \usepackage[capitalize]{cleveref}
+\usepackage{thmtools}
+\usepackage[shortlabels]{enumitem}
+\usepackage[many]{tcolorbox}
 
 
 
@@ -58,9 +61,10 @@
 \newtheorem{rmk}[thm]{Remark}
 \newtheorem{setup}[thm]{Setup}
 \newtheorem{cond}[thm]{Condition}
-\newtheorem{cons}[thm]{Construction}
+\newtheorem{cst}[thm]{Construction}
 \newtheorem{obs}[thm]{Observation}
 \newtheorem{ques}[thm]{Question}
+\newtheorem{dis}[thm]{Discussion}
 
 \newtheorem*{rmk*}{Remark}
 \newtheorem*{setup*}{Setup}
@@ -68,12 +72,38 @@
 \newtheorem*{cons*}{Construction}
 \newtheorem*{obs*}{Observation}
 \newtheorem*{ques*}{Question}
+\newtheorem*{dis*}{Discussion}
 
 \numberwithin{equation}{section}
 
 
-\DeclareMathOperator{\an}{an}
+% for ref to list in theorems, etc...
+
+\newlist{thmlist}{enumerate}{1}
+\setlist[thmlist]{label=(\roman{thmlisti}),
+                  ref=\thethm.(\roman{thmlisti}),
+                  noitemsep}
+                  
+\Crefname{listthm}{Theorem}{Theorems}
+\Crefname{listlem}{Lemma}{Lemmas}
+\Crefname{listprop}{Proposition}{Propositions}
+\Crefname{listcor}{Corollary}{Corollaries}
+\Crefname{listfact}{Fact}{Facts}
+\Crefname{listconj}{Conjecture}{Conjectures}
+\Crefname{listclm}{Claim}{Claims}
+
+\addtotheorempostheadhook[thm]{\crefalias{thmlisti}{listthm}}
+\addtotheorempostheadhook[lem]{\crefalias{thmlisti}{listlem}}
+\addtotheorempostheadhook[prop]{\crefalias{thmlisti}{listprop}}
+\addtotheorempostheadhook[cor]{\crefalias{thmlisti}{listcor}}
+\addtotheorempostheadhook[fact]{\crefalias{thmlisti}{listfact}}
+\addtotheorempostheadhook[clm]{\crefalias{thmlisti}{listclm}}
+\addtotheorempostheadhook[conj]{\crefalias{thmlisti}{listconj}}
+
+
+% My Math operators
 \DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\an}{an}
 \DeclareMathOperator{\aim}{Im}
 \DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\aend}{End}
@@ -98,6 +128,7 @@
 \DeclareMathOperator{\op}{op}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\proj}{Proj}
 \DeclareMathOperator{\pd}{pd}
 \DeclareMathOperator{\red}{red}
@@ -110,6 +141,7 @@
 \DeclareMathOperator{\soc}{soc}
 \DeclareMathOperator{\spec}{Spec}
 \DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\sym}{Sym}
 \DeclareMathOperator{\tor}{Tor}
 \DeclareMathOperator{\upth}{th}
 
@@ -319,3 +351,34 @@
   % urlcolor = magenta,
   allcolors = zhan
 }
+
+\newtcolorbox{mybox}[3][beamer]{
+    colback=white,
+    coltitle=black,
+    colframe=#3,
+    coltext=zhan,
+    title={\textbf{#2}},
+    valign=top,
+    halign=left,
+    before skip=0.5cm,
+    after skip=0.5cm,
+    attach title to upper,
+    after title={:\ },
+    #1
+}
+                     
+\newenvironment{todobox}
+    {
+    \begin{mybox}[]{To Do}{red}
+    }
+    {
+    \end{mybox}
+    }
+    
+\newenvironment{thoughts}
+    {
+    \begin{mybox}[]{Thoughts}{yellow}
+    }
+    {
+    \end{mybox}
+    }
