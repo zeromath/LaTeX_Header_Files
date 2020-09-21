@@ -1,11 +1,11 @@
 \documentclass{amsart}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{mathrsfs}
-\usepackage[sans]{dsfont}
+% \usepackage[sans]{dsfont}
 \usepackage{stmaryrd}
 \usepackage{mathtools}
 \usepackage{subfiles}
-%\usepackage{enumerate}
+% \usepackage{enumerate}
 \usepackage{fullpage}
 \usepackage{tikz}
 % \usepackage{marginnote}
@@ -31,6 +31,7 @@
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{calc}
 
+%%% THEOREM ENVIRONMENTS %%%
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{cor}[thm]{Corollary}
@@ -100,51 +101,52 @@
 \addtotheorempostheadhook[clm]{\crefalias{thmlisti}{listclm}}
 \addtotheorempostheadhook[conj]{\crefalias{thmlisti}{listconj}}
 
+%%% END THEOREM ENVIRONMENTS %%%
 
-% My Math operators
+
+%%% MATH OPERATORS %%%
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\an}{an}
-\DeclareMathOperator{\aim}{Im}
-\DeclareMathOperator{\aut}{Aut}
-\DeclareMathOperator{\aend}{End}
-\DeclareMathOperator{\ahom}{Hom}
-\DeclareMathOperator{\aker}{Ker}
-\DeclareMathOperator{\ann}{Ann}
-\DeclareMathOperator{\ass}{Ass}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Ass}{Ass}
 \DeclareMathOperator{\chr}{char}
 \DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\coker}{Coker}
-\DeclareMathOperator{\colim}{Colim}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Colim}{Colim}
 \DeclareMathOperator{\depth}{depth}
-\DeclareMathOperator{\der}{Der}
-\DeclareMathOperator{\ext}{Ext}
-\DeclareMathOperator{\fr}{Frac}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Fr}{Frac}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\hght}{ht}
 \DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\limit}{Lim}
-\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Lim}{Lim}
+\DeclareMathOperator{\Mor}{Mor}
 \DeclareMathOperator{\op}{op}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Pic}{Pic}
 \DeclareMathOperator{\pr}{pr}
-\DeclareMathOperator{\proj}{Proj}
+\DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\pd}{pd}
+\DeclareMathOperator{\pt}{pt}
 \DeclareMathOperator{\red}{red}
 \DeclareMathOperator{\rk}{rank}
-\DeclareMathOperator{\SHom}{\mathscr{H}\text{\kern -3pt {\calligra\large om}}\,}
-\DeclareMathOperator{\SKer}{\mathscr{K}\text{\kern -3pt {\calligra\large er}}\,}
-\DeclareMathOperator{\SDer}{\mathscr{D}\text{\kern -2pt {\calligra\large er}}\,}
-\DeclareMathOperator{\SEnd}{\mathscr{E}\text{\kern -3pt {\calligra\large nd}}\,}
-\DeclareMathOperator{\SSym}{\mathscr{S}\text{\kern -3pt {\calligra\large ym}}\,}
 \DeclareMathOperator{\soc}{soc}
-\DeclareMathOperator{\spec}{Spec}
-\DeclareMathOperator{\supp}{Supp}
-\DeclareMathOperator{\sym}{Sym}
-\DeclareMathOperator{\tor}{Tor}
-\DeclareMathOperator{\upth}{th}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Tor}{Tor}
 
+
+%%% MATH FONTS %%%
+% mathbb - mbb
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\CC}{\mbb{C}}
 \newcommand{\QQ}{\mbb{Q}}
@@ -293,14 +295,41 @@
 \newcommand{\cY}{\mcal{Y}}
 \newcommand{\cZ}{\mcal{Z}}
 
+%%% CATEGORICAL TERMS %%%
+%% CAT NAMES
+\newcommand{\catname}[1]{\mathbf{#1}}
 
+\DeclareMathOperator{\Ab}{\catname{Ab}}
+\DeclareMathOperator{\Coh}{\catname{Coh}}
+\DeclareMathOperator{\Loc}{\catname{Loc}}
+\DeclareMathOperator{\Mod}{\catname{Mod}}
+\DeclareMathOperator{\QCoh}{\catname{QCoh}}
+\DeclareMathOperator{\Rep}{\catname{Rep}}
+\DeclareMathOperator{\Vect}{\catname{Vect}}
+\DeclareMathOperator{\Left}{L}
+\DeclareMathOperator{\Right}{R}
+
+
+%% SHEAF NAMES
+\newcommand{\sheafname}[2]{\mathscr{#1}\text{\kern -3pt {\calligra\large  #2}}\,}
+\newcommand{\SHom}{\sheafname{H}{om}}
+\newcommand{\SKer}{\sheafname{K}{er}}
+\newcommand{\SDer}{\mathscr{D}\text{\kern -2pt {\calligra\large er}}\,}
+\newcommand{\SEnd}{\sheafname{E}{nd}}
+\newcommand{\SSym}{\sheafname{S}{ym}}
+
+%% DERIVED NAMES
+\newcommand{\rdf}{\mathsf{R}}
+\newcommand{\ldf}{\mathsf{L}}
+
+
+%%% OTHER COMMANDS %%%
 \newcommand{\dps}{\displaystyle}
 \newcommand{\seq}[3][1]{#2_{#1},\dots,#2_{#3}}
 \newcommand{\fpd}[2][x]{\frac{\partial #2}{\partial #1}}
 
-\newcommand{\rdf}{\mathds{R}}
-\newcommand{\ldf}{\mathds{L}}
 
+%%% PAIRED OPERATORS %%%
 % Need package mathtools
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
